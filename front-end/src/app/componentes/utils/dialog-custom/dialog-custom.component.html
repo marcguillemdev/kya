@@ -1,0 +1,27 @@
+<div class="container-fluid p-2">
+  <!--<div class="text-center">
+    <mat-icon [ngStyle]="{'color':'red'}" class="me-3 text-center fs-3">error</mat-icon>
+  </div>-->
+  <p class="display-6 fs-5 mb-4 justificar" style="max-width: 600px;" cypressSelector="messageBoxDescription" [innerHTML]="datos.descripcion"></p>
+  <mat-form-field appearance="fill" class="w-100" *ngIf="inputText">
+    <mat-label>{{inputLabelText}}</mat-label>
+    <input matInput [(ngModel)]="inputValue" name="inputValue">
+  </mat-form-field>
+  <div class="col" *ngIf="okButton">
+    <button class="custom-accent-button text-light w-100 p-0 py-2 m-0 text-center" style="position: relative;" cypressSelector="okButtonMessageBox" (click)="closeDialog(null)">Aceptar</button>
+  </div>
+  <div class="col" *ngIf="refreshButton">
+    <button mat-raised-button color="accent" class="m-1 bg-dark w-100 text-white" cypressSelector="updateButtonMessageBox" (click)="actualizar()">Actualizar</button>
+  </div>
+  <div class="col" *ngIf="inputText">
+    <button mat-raised-button color="accent" class="m-1 bg-dark w-100 text-white" cypressSelector="okButtonMessageBox" (click)="closeDialog(inputValue)">Aceptar</button>
+  </div>
+  <div class="row g-0">
+    <div class="col pe-4" *ngIf="yesNoButton">
+      <button class="custom-accent-button text-light inter-font w-100 p-0 py-2 m-0 text-center" style="position: relative;" (click)="closeDialog(true)">Si</button>
+    </div>
+    <div class="col" *ngIf="yesNoButton">
+      <button class="custom-primary-button text-light  inter-font w-100 p-0 py-2 m-0 text-center" style="position: relative;" (click)="closeDialog(false)">No</button>
+    </div>
+  </div>
+</div>

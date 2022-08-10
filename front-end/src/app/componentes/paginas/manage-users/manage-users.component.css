@@ -1,0 +1,30 @@
+.header-table {
+  background-color: rgb(252, 163, 17, .1) !important;
+  border-left: 5px solid #df5656 !important;
+  color: #e05956 !important;
+}
+
+::ng-deep .p-datatable.p-datatable-hoverable-rows .p-datatable-tbody > tr:not(.p-highlight):hover {
+  background: rgba(252, 162, 17, 0.214) !important;
+  color: #e05956 !important;
+
+}
+
+::ng-deep .p-datatable .p-sortable-column:focus {
+  box-shadow: inset 0 0 0 0.15rem rgba(252, 162, 17, .5) !important;
+  outline: 0 none;
+}
+
+::ng-deep .p-datatable .p-datatable-tbody > tr:focus {
+  outline: 0.15rem solid #e05956 ;
+  outline-offset: 0rem;
+}
+
+::ng-deep .p-datatable .p-datatable-tbody > tr.p-highlight {
+  background: rgba(252, 162, 17, .2);
+  color: #e05956;
+}
+
+::ng-deep .p-datatable .p-datatable-thead > tr > th {
+  width: inherit !important;
+}

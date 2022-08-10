@@ -1,0 +1,30 @@
+<div *ngIf="dialogHeader" [style]="'background-color: ' + headerBackgroundColor + '; color: ' + headerTextColor + ';'">
+  <div class="row g-0 moveCursor headerDialog" *ngIf="movible" cdkDrag cdkDragRootElement=".cdk-overlay-pane" cdkDragHandle>
+    <div class="col">
+      <div class="display-6 fs-5 fw-bold align-middle"><mat-icon *ngIf="this.data.icon">{{this.data.icon}}</mat-icon><span [innerHTML]="staticTitle"></span></div>
+    </div>
+    <div class="col-1 text-end" *ngIf="this.data.closeButton">
+      <button type="button" class="btn-custom-close botonCerrar" [style]="'background: transparent url(assets/close-button-white.png) center/1em auto no-repeat'" (click)="closeDialog()"></button>
+    </div>
+  </div>
+  <div class="row g-0 noCursor headerDialog" *ngIf="!movible" [style]="'background-color: ' + coloresCorporativos.PRIMARY + '; color: white;'">
+    <div class="col">
+      <div class="display-6 fs-5 fw-bold align-middle"><mat-icon *ngIf="this.data.icon">{{this.data.icon}}</mat-icon><span>{{dynamicTitle}}</span></div>
+    </div>
+    <div class="col-1 text-end" *ngIf="this.data.closeButton">
+      <button type="button"
+      class="btn-custom-close botonCerrar"
+      [style]="'background: transparent url(assets/close-button-white.png) center/1em auto no-repeat'"
+      (click)="closeDialog()"
+      [class.mat-elevation-z11]="mouseOverCloseButton"
+      (mouseenter)="mouseOverCloseButton = true"
+      (mouseleave)="mouseOverCloseButton = false"></button>
+    </div>
+  </div>
+</div>
+
+<mat-dialog-content>
+  <div class="p-default">
+    <ng-template #dynamicComponent></ng-template>
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,26 @@
+
+
+.my-sidebar {
+  -ms-flex: 0 0 320px;
+  flex: 0 0 320px;
+}
+
+.text-normal {
+  color: rgb(155, 101, 14);
+}
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0px;
+}
+
+.no-display {
+  display: none !important;
+}
+
+.mobile-li {
+  width: 45px !important;
+}
+
+li {
+  transition: all 0.5s ease 0s;
+}

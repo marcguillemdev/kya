@@ -1,0 +1,65 @@
+<div class="row g-0 align-items-center" style="height: 100vh;" *ngIf="tokenChecked">
+
+  <div class="col-7" *ngIf="currentViewport !== 'xs' && currentViewport !== 'sm' && currentViewport !== 'md'">
+    <img src="../../../../assets/low-poly-2.svg" alt="" height="100%" width="100%" class="login-img">
+  </div>
+
+  <div class="col text-center" [class.mx-5]="currentViewport === 'xs' || currentViewport === 'sm'">
+
+    <form [formGroup]="formulario" (ngSubmit)="login()">
+      <div class="row g-0">
+        <div class="col text-center">
+          <div class="text-center"
+          [class.text-center]="currentViewport === 'xs' || currentViewport === 'sm'"
+          [class.container-form]="currentViewport !== 'xs' && currentViewport !== 'sm'">
+            <h1 class="m-0 inter-font mb-4 fs-2 text-gradient"
+            [class.text-start]="currentViewport !== 'xs' && currentViewport !== 'sm'"
+            style="font-weight: 800;">
+              Acceso a
+            </h1>
+            <div class="" [class.text-start]="currentViewport !== 'xs' && currentViewport !== 'sm'">
+              <img src="../../../../assets/kya-logo-no-shadow.png" style="max-width: 100%;" [class.responsive-img]="currentViewport === 'xs' || currentViewport === 'sm'" width="350px" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5 g-0">
+        <div class="col">
+          <input class="custom-input-text" formControlName="nombreUsuario"
+          [class.w-50]="currentViewport !== 'xs' && currentViewport !== 'sm'"
+          [class.w-100]="currentViewport === 'xs' || currentViewport === 'sm'"
+          placeholder="Nombre de usuario">
+        </div>
+      </div>
+      <div class="row mt-3 g-0">
+        <div class="col">
+          <input class="custom-input-text" formControlName="password"
+          type="password"
+          [class.w-50]="currentViewport !== 'xs' && currentViewport !== 'sm'"
+          [class.w-100]="currentViewport === 'xs' || currentViewport === 'sm'"
+          placeholder="Contraseña">
+        </div>
+      </div>
+      <div class="row g-0">
+        <div class="col">
+          <div class="inter-font text-end mt-3 text-secondary button-forgot-password"
+          [class.aligned-end-mobile]="currentViewport === 'xs' || currentViewport === 'sm'"
+          [class.aligned-end]="currentViewport !== 'xs' && currentViewport !== 'sm'">
+            ¿Has olvidado tu contraseña?
+          </div>
+        </div>
+      </div>
+      <div class="row mt-3 g-0">
+        <div class="col">
+          <button class="px-0 custom-accent-button"
+          [class.w-50]="currentViewport !== 'xs' && currentViewport !== 'sm'"
+          [class.w-100]="currentViewport === 'xs' || currentViewport === 'sm'"
+          style="position: relative;">Entrar</button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>

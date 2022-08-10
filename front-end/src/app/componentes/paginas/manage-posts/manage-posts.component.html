@@ -1,0 +1,82 @@
+<app-cabecera [title]="'KYA: Gestión de posts'" [description]="'Aquí puedes añadir, modificar o eliminar posts.'"></app-cabecera>
+<div class="d-flex flex-wrap rounded-3">
+  <div>
+    <button class="custom-primary-button my-3 ms-3" (click)="refresh()" style="position: relative">
+      <i class="me-2 bi bi-arrow-clockwise"></i>
+      Actualizar
+    </button>
+  </div>
+  <div>
+    <button class="custom-accent-button my-3 ms-3" (click)="addPost()" style="position: relative">
+      <i class="me-2 bi bi-plus-lg"></i>
+      Añadir post
+    </button>
+  </div>
+  <div *ngIf="postSeleccionado">
+    <button class="custom-accent-button my-3 ms-3" [class.mx-0]="currentViewport === 'xs' || currentViewport === 'sm'" (click)="editPost()" style="position: relative">
+      <i class="me-2 bi bi-pencil-fill"></i>
+      Modificar post
+    </button>
+  </div>
+  <div *ngIf="postSeleccionado">
+    <button class="custom-primary-button my-3 me-0 ms-3" style="position: relative" (click)="deletePost()">
+      <i class="me-2 bi bi-trash-fill"></i>
+      Eliminar post
+    </button>
+  </div>
+  <div class="my-3 ms-3">
+    <input class="custom-input-text w-100" placeholder="Buscar posts..." style="height: 40px;">
+  </div>
+</div>
+
+<p-table
+*ngIf="posts"
+  [value]="posts"
+  [autoLayout]="true"
+  [(selection)]="postSeleccionado"
+  [rowHover]="true"
+  [responsive]="true"
+  selectionMode="single"
+  dataKey="codigo_post"
+  (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+  <ng-template pTemplate="header">
+    <tr class="inter-font fs-5">
+      <th class="text-white header-table" pSortableColumn="codigo_post">Id</th>
+      <th class="text-white header-table" pSortableColumn="authors">Autor</th>
+      <th class="text-white header-table" pSortableColumn="title">Título</th>
+      <th class="text-white header-table">Contenido</th>
+      <th class="text-white header-table" pSortableColumn="creationDate">Creación</th>
+      <th class="text-white header-table" pSortableColumn="domain">Dominio</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-post>
+    <tr [pSelectableRow]="post" class="inter-font">
+        <td>{{post.codigo_post}}</td>
+        <td *ngIf="post.authors && post.authors.length > 0; else authorNull">
+          <span *ngFor="let author of post.authors">
+            {{author.nombreUsuario}}
+          </span>
+        </td>
+        <ng-template #authorNull>
+          <td>Sin autor</td>
+        </ng-template>
+        <td>{{post.title}}</td>
+        <td>
+          <button class="custom-accent-button" (click)="editPost()" style="position: relative">
+            <i class="bi bi-eye-fill"></i>
+          </button>
+          <button class="custom-accent-button ms-3" (click)="editPost()" style="position: relative">
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+          <button class="custom-primary-button ms-3" (click)="editPost()" style="position: relative">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </td>
+        <td>{{post.creationDate | date: 'medium' }}</td>
+        <td *ngIf="post.domain;else domainNull">{{post.domain.domainName}}</td>
+        <ng-template #domainNull>
+          <td>Sin dominio</td>
+        </ng-template>
+    </tr>
+  </ng-template>
+</p-table>

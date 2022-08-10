@@ -1,0 +1,89 @@
+<app-cabecera [title]="'KYA: Gestión de usuarios'" [description]="'Aquí puedes añadir, modificar o eliminar usuarios incluyendo sus roles.'"></app-cabecera>
+<div class="d-flex flex-wrap rounded-3">
+  <div>
+    <button class="custom-primary-button my-3 ms-3" (click)="refresh()" style="position: relative">
+      <i class="me-2 bi bi-arrow-clockwise"></i>
+      Actualizar
+    </button>
+  </div>
+  <div>
+    <button class="custom-accent-button my-3 ms-3" (click)="addUser()" style="position: relative">
+      <i class="me-2 bi bi-plus-lg"></i>
+      Añadir usuario
+    </button>
+  </div>
+  <div *ngIf="usuarioSeleccionado">
+    <button class="custom-accent-button my-3 ms-3" [class.mx-0]="currentViewport === 'xs' || currentViewport === 'sm'" (click)="editUser()" style="position: relative">
+      <i class="me-2 bi bi-pencil-fill"></i>
+      Modificar usuario
+    </button>
+  </div>
+  <div *ngIf="usuarioSeleccionado">
+    <button class="custom-primary-button my-3 me-0 ms-3" style="position: relative" (click)="deleteUser()">
+      <i class="me-2 bi bi-trash-fill"></i>
+      Eliminar usuario
+    </button>
+  </div>
+  <div class="my-3 ms-3">
+    <input class="custom-input-text w-100" placeholder="Buscar usuarios..." style="height: 40px;">
+  </div>
+</div>
+
+<p-table
+*ngIf="usuarios"
+  [value]="usuarios"
+  [autoLayout]="true"
+  [(selection)]="usuarioSeleccionado"
+  [rowHover]="true"
+  [responsive]="true"
+  selectionMode="single"
+  dataKey="codigo_usuario"
+  (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+  <ng-template pTemplate="header">
+    <tr class="inter-font fs-5">
+      <th class="text-white header-table"  pSortableColumn="codigo_usuario">Identificador</th>
+      <th class="text-white header-table"  pSortableColumn="nombre">Nombre</th>
+      <th class="text-white header-table"  pSortableColumn="nombreUsuario">Nick</th>
+      <th class="text-white header-table"  pSortableColumn="email">Email</th>
+      <th class="text-white header-table" pSortableColumn="roles">Roles</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-usuario>
+    <tr [pSelectableRow]="usuario" class="inter-font">
+        <td>{{usuario.codigo_usuario}}</td>
+        <td>{{usuario.nombre}}</td>
+        <td>{{usuario.nombreUsuario}}</td>
+        <td>{{usuario.email}}</td>
+        <td><span *ngFor="let authority of usuario.roles"> {{authority.rolNombre}}</span></td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<!--<p-table
+#fundListRef
+[value]="usuarios"
+[resizableColumns]="true"
+[autoLayout]="true"
+[(selection)]="usuariosSeleccionados"
+[rowHover]="true" dataKey="codigo_usuario"
+[metaKeySelection]="true"
+selectionMode="single">
+  <ng-template pTemplate="header">
+      <tr class="inter-font fs-5">
+          <th class="text-white header-table">Identificador</th>
+          <th class="text-white header-table">Nombre</th>
+          <th class="text-white header-table">Nick</th>
+          <th class="text-white header-table">Email</th>
+          <th class="text-white header-table">Roles</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-usuario>
+      <tr>
+          <td>{{usuario.codigo_usuario}}</td>
+          <td>{{usuario.nombre}}</td>
+          <td>{{usuario.nombreUsuario}}</td>
+          <td>{{usuario.email}}</td>
+          <td><span *ngFor="let authority of usuario.roles">{{authority.rolNombre}}</span></td>
+      </tr>
+  </ng-template>
+</p-table>-->

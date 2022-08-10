@@ -1,0 +1,23 @@
+<form *ngIf="domainReference" #formu="ngForm" (ngSubmit)="submitForm(formu)">
+  <div class="row g-0">
+    <div class="col-md-6 p-1">
+      <input class="custom-input-text w-100" type="name" name="name" placeholder="Nombre" [(ngModel)]="domainReference.domainName" required>
+    </div>
+    <div class="col-md-6 p-1">
+      <input class="custom-input-text w-100" type="url" name="url" placeholder="Url" [(ngModel)]="domainReference.domainUrl" required>
+    </div>
+  </div>
+  <div class="row g-0">
+    <div class="col p-1">
+      <input class="custom-input-text w-100" type="description" name="description" placeholder="Descripcion" autocomplete="chrome-off" [(ngModel)]="domainReference.domainDescription" required>
+    </div>
+  </div>
+  <div class="row g-0">
+    <div class="col mt-2 p-1">
+      <button type="submit" class="custom-accent-button text-center w-100 px-0" style="position: relative">
+        <span class="ms-2" *ngIf="isUpdate">Modificar dominio</span>
+        <span class="ms-2" *ngIf="!isUpdate">Registrar dominio</span>
+      </button>
+    </div>
+  </div>
+</form>

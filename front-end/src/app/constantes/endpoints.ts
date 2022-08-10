@@ -1,0 +1,18 @@
+export const endpoints = {
+  domainName: "",
+  kyaBackendUrl: "http://192.168.1.52:8080",
+  login: "/auth/login",
+  validateToken: "/auth/validate-token",
+  refreshToken: "/auth/refresh-token",
+  getDomains: "/domain/get-domains",
+  getAllDomains: "/domain/get-all-domains",
+  registerDomain: "/domain/register-domain",
+  deleteDomain: "/domain/delete-domain",
+  updateDomain: "/domain/update-domain",
+  getAllPosts: "/posts/get-all-posts",
+  getUsuarios: "/usuario/all",
+  getRoles: "/usuario/rol/all",
+  registerUser: "/usuario/register",
+  updateUser: "/usuario/update",
+  deleteUser: "/usuario/delete",
+}
