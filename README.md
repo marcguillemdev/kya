@@ -3,7 +3,7 @@
 # KYA IS STILL IN DEVELOPMENT AND DOES NOT HAVE AN INSTALLER YET
 
 
-# Kya, a small and fast CMS
+# Kya, a small and fast headless CMS
 
 Kya is a small CMS coded in Java and TypeScript using Spring Boot and Angular. From Kya you can manage multiple domains that contain a lot of posts from one place. The posts can be retrieved from an API and it only serves to specific domain.
 
