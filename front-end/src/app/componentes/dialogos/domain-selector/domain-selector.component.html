@@ -1,6 +1,0 @@
-<button class="menu-button text-start rounded-3 fs-5 w-100 py-2 text-dark mb-2"
-[class.selectedButton]="currentDomainId === domain.id"
-[class.inter-font]="currentDomainId === domain.id"
- *ngFor="let domain of domains;" [value]="domain.id" (click)="setWebsite(domain.id)">
-  <span class="px-2">{{domain.domainName}}</span>
-</button>

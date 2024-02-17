@@ -1,4 +1,11 @@
-<div class="routerOutletWrapper2">
-  <router-outlet #outlet="outlet"></router-outlet>
+<div class="container-flex">
+  <app-navbar [sideNav]="sideNav" />
+  <mat-sidenav-container class="content">
+    <mat-sidenav #sideNav mode="side" opened>
+      <app-sidenav [sideNav]="sideNav" />
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet />
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
-
